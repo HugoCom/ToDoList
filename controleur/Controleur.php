@@ -15,13 +15,14 @@
 
         $TErreur = array();
         try{
-            $action=$_REQUEST['action'];
+            $action=isset($_REQUEST['action'])?
+                $_REQUEST['action']:'neRienFaire';
             switch ($action){
-                case NULL:
+                case 'neRienFaire':
                     $this->Reinit();
                     break;
 
-                case "validationFormulaire":
+                case "validerFormulaire":
                     $this->ValidationFormulaire($TErreur);
                     break;
 
@@ -67,6 +68,6 @@
             $date=$_GET['date'];
             Validation::val_form($nom,$prenom,$date,$email,$dVueEreur);
 
-            require ($rep.$vues['Accueil']);
+            require ($rep.$vues['Erreur']);
         }
 }

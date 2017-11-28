@@ -20,7 +20,7 @@
             Date De Naissance:<br>
             <input type="text" name="date" id="date">
             <br><br>
-            <input type="submit" name="action" value="validerFormulaire">
+            <input type="submit" name=action value="validerFormulaire">
         </form>
     </body>
 </html>
