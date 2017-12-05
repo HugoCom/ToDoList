@@ -1,11 +1,4 @@
 <?php
-
-/**
- * Created by PhpStorm.
- * User: hucombe
- * Date: 28/11/17
- * Time: 13:45
- */
 class Autoload
 {
     private static $_instance = null;
@@ -43,7 +36,6 @@ class Autoload
             $dir =array('modele/','./','config/','controleur/','vue/');
             foreach ($dir as $d){
             $file=$rep.$d.$filename;
-            //echo $file;
             if (file_exists($file))
             {
                 include $file;

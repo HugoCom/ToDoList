@@ -23,7 +23,7 @@
                     break;
 
                 case "validerFormulaire":
-                    $this->ValidationFormulaire($TErreur);
+                    $this->ValidationFormulaire();
                     break;
 
                 default:
@@ -48,26 +48,23 @@
 
     function Reinit(){
         global $rep,$vues;
-
-        $dVue = array (
-            'nom' => "",
-            'prenom' => "",
-            'ddn' => "",
-            'email' => ""
-        );
         require ($rep.$vues['Accueil']);
     }
 
-        function ValidationFormulaire(array $dVueEreur) {
+        function ValidationFormulaire() {
             global $rep,$vues;
 
-
-            $nom=$_GET['nom'];
+            $login=$_GET['login'];
+            $password=$_GET['password'];
             $prenom=$_GET['prenom'];
+            $nom=$_GET['nom'];
             $email=$_GET['email'];
-            $date=$_GET['date'];
-            Validation::val_form($nom,$prenom,$date,$email,$dVueEreur);
-
-            require ($rep.$vues['Erreur']);
+            try{
+                Validation::val_form($login,$password,$prenom,$nom,$email);
+            }
+            catch(Exception $e){
+                $TErreur[]=$e;
+                require_once($rep.$vues['Erreur']);
+            }
         }
 }

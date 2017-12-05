@@ -10,74 +10,42 @@ class Validation
 {
 
     static function val_action($action) {
-
         if (!isset($action)) {
             throw new Exception('Pas d\'action');
-
         }
     }
 
-    static function val_form(string $nom, string $prenom, string $dateDeNaissance, string $email, array $TErreur) {
-
-        if (!isset($nom)||$nom==""||!filter_var($prenom, FILTER_VALIDATE_STRING)) {
-                $TErreur[] ="Pas de nom";
-                $nom="";
+    static function val_form(string $login, string $password, string $surname, string $name, string $email)
+    {
+        if(empty($login))
+            throw new Exception('Pas de login');
+        if(empty($password))
+            throw new Exception('Pas de password');
+        if(empty($surname))
+            throw new Exception('Pas de surname');
+        if(empty($name))
+            throw new Exception('Pas de name');
+        if(empty($email))
+            throw new Exception('Pas d\'email');
+        if (filter_var($email, FILTER_VALIDATE_EMAIL) == FALSE) {
+            throw new Exception('Mauvais format d\'email');
         }
-
-        if (!isset($prenom)||$prenom==""||!filter_var($prenom, FILTER_VALIDATE_STRING)) {
-                $TErreur[] ="Pas de prenom ";
-                $prenom="";
+        if ($login != filter_var($login, FILTER_SANITIZE_STRING)) {
+            throw new Exception('Injection SQL');
         }
-
-        if (!isset($dateDeNaissance)||$dateDeNaissance==""||!filter_var($dateDeNaissance, FILTER_VALIDATE_STRING)) {
-                $TErreur[] ="Pas de date de naissance";
-                $dateDeNaissance="";
+        if ($password != filter_var($password, FILTER_SANITIZE_STRING)) {
+            throw new Exception('Injection SQL');
         }
-
-         if (!isset($email)||$email==""||!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $TErreur[] ="Pas d'age ";
-                $email="";
+        if ($surname != filter_var($surname, FILTER_SANITIZE_STRING)) {
+            throw new Exception('Injection SQL');
         }
-
-        if ($nom != filter_var($nom, FILTER_SANITIZE_STRING)) {
-                $TErreur[] ="Tentative d'injection de code (Attaque Sécurité)";
-                $nom="";
+        if ($name != filter_var($name, FILTER_SANITIZE_STRING)) {
+            throw new Exception('Injection SQL');
         }
-
-        if ($prenom != filter_var($prenom, FILTER_SANITIZE_STRING)) {
-                $TErreur[] ="Tentative d'injection de code (Attaque Sécurité)";
-                $prenom="";
-        }
-
-        if ($dateDeNaissance != filter_var($dateDeNaissance, FILTER_SANITIZE_STRING)) {
-                $TErreur[] ="Tentative d'injection de code (Attaque Sécurité)";
-                $dateDeNaissance="";
-        }
-
         if ($email != filter_var($email, FILTER_SANITIZE_STRING)) {
-                $TErreur[] ="Tentative d'injection de code (Attaque Sécurité)";
-                $email="";
+            throw new Exception('Injection SQL');
         }
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+?>

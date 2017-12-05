@@ -1,11 +1,6 @@
 <?php
-include_once("modele/Utilisateur.php");
-/**
- * Created by PhpStorm.
- * User: hucombe
- * Date: 14/11/17
- * Time: 15:11
- */
+include_once("modele/Task.php");
+
 class UserGateway
 {
     private $con;

@@ -8,17 +8,20 @@
         <p>Comment ça va les amis ?!</p>
 
         <form method=GET action="index.php">
-            Nom :<br>
-            <input type="text" name="nom" id="nom">
+            login :<br>
+            <input type="text" name="login" id="login">
             <br>
-            Prenom :<br>
+            password :<br>
+            <input type="text" name="password" id="password">
+            <br>
+            prenom:<br>
             <input type="text" name="prenom" id="prenom">
             <br>
-            Email:<br>
-            <input type="text" name="email" id="email">
+            nom:<br>
+            <input type="text" name="nom" id="nom">
             <br>
-            Date De Naissance:<br>
-            <input type="text" name="date" id="date">
+            email:<br>
+            <input type="text" name="email" id="email">
             <br><br>
             <input type="submit" name=action value="validerFormulaire">
         </form>
