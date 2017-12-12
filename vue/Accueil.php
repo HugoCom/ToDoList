@@ -1,29 +1,22 @@
 <html>
     <head>
-        <title>Accueil !</title>
+        <title>ToDo List </title>
     </head>
 
     <body>
-        <h1>Bonjour :</h1>
-        <p>Comment ça va les amis ?!</p>
+        <h1> Vos Listes </h1>
 
-        <form method=GET action="index.php">
-            login :<br>
-            <input type="text" name="login" id="login">
-            <br>
-            password :<br>
-            <input type="text" name="password" id="password">
-            <br>
-            prenom:<br>
-            <input type="text" name="prenom" id="prenom">
-            <br>
-            nom:<br>
-            <input type="text" name="nom" id="nom">
-            <br>
-            email:<br>
-            <input type="text" name="email" id="email">
-            <br><br>
-            <input type="submit" name=action value="validerFormulaire">
-        </form>
+        <?php
+            for ($i = 1; $i <= 10; $i++) {
+                echo "<ul>";
+                for ($j = 1; $j<= 1; $j++) {
+                    echo "<li>";
+                    echo var_dump($TVues);
+                    echo "</li>";
+                }
+                echo "</ul>";
+                echo "<br>";
+            }
+        ?>
     </body>
 </html>

@@ -11,7 +11,7 @@ class UserGateway
     }
 
     public function insert($login,$password,$prenom,$nom,$email) {
-        $query='INSERT INTO User (login,password,prenom,nom,email) VALUES (?,?,?,?)';
+        $query='INSERT INTO User (login,password,prenom,nom,email) VALUES (?,?,?,?,?)';
 
         $stmt=$this->con->prepare($query);
         $stmt->bindValue(1,$login, PDO::PARAM_STR);
@@ -22,22 +22,14 @@ class UserGateway
         $stmt->execute();
     }
     public function select($arg){
-        $query='SELECT * FROM User WHERE ID=?';
+        $query='SELECT * FROM User WHERE login=?';
         $stmt=$this->con->prepare($query);
-        $stmt->bindValue(1,$arg,PDO::PARAM_INT);
+        $stmt->bindValue(1,$arg,PDO::PARAM_STR);
         $stmt->execute();
         $result=$stmt->fetchAll();
         foreach($result as $row) {
             $tab[] = new User($row[1], $row[3], $row[4], $row[5]);
         }
         return $tab;
-    }
-    public function update($id,$nom) {
-        $query = 'UPDATE User SET Nom=? WHERE ID=?';
-        $stmt = $this->con->prepare($query);
-        $stmt->bindValue(1,$nom, PDO::PARAM_STR);
-        $stmt->bindValue(2, $id, PDO::PARAM_INT);
-        $stmt->execute();
-
     }
 }

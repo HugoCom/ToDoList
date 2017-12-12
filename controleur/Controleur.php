@@ -5,7 +5,6 @@
  * Date: 23/11/17
  * Time: 14:46
  */
-
     class Controleur {
 
     function __construct()
@@ -48,6 +47,8 @@
 
     function Reinit(){
         global $rep,$vues;
+        $t = new ListTaskGateway(new Connection("mysql:host=localhost;dbname=dbhucombe","hucombe","hucombe"));
+        $TVues=$t->select();
         require ($rep.$vues['Accueil']);
     }
 
