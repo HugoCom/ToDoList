@@ -16,7 +16,21 @@ class ListTaskGateway
         $stmt->bindValue(1,$name, PDO::PARAM_STR);
         $stmt->bindValue(2,$date, PDO::PARAM_STR);
         $stmt->execute();
+
+        return $this->selectList($name);
     }
+
+    public function selectlist($name) {
+        $query='SELECT * FROM ListTask WHERE name = ?';
+        $stmt=$this->con->prepare($query);
+        $stmt->bindValue(1,$name, PDO::PARAM_STR);
+        $stmt->execute();
+        $result=$stmt->fetch();
+        if($result == null)
+            return null;
+        return new ListTask($result[1],$result[2],$result[0]);
+    }
+
     public function select() {
         $query='SELECT * FROM ListTask';
         $tab=array();
@@ -28,6 +42,7 @@ class ListTaskGateway
         }
         return $tab;
     }
+
     public function delete($arg){
         //TODO : foreach pour supprimer les tâches avant la liste
         $query='DELETE FROM ListTask WHERE ID=?';

@@ -9,15 +9,31 @@
 class User
 {
     public $login;
-    public $prenom;
-    public $nom;
+    public $surname;
+    public $name;
     public $email;
+    public $listTask;
 
-    public function __construct(string $login, string $prenom, string $nom, string $email)
+    public function __construct(string $login, string $surname, string $name, string $email, int $listTask)
     {
         $this->login = $login;
-        $this->prenom = $prenom;
-        $this->nom = $nom;
+        $this->prenom = $surname;
+        $this->nom = $name;
         $this->email = $email;
+        $this->listeTache = $listTask;
+    }
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getSurname()
+    {
+        return $this->surname;
+    }
+
+    public function getListTask()
+    {
+        return $this->listTask;
     }
 }

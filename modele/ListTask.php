@@ -5,14 +5,15 @@ class ListTask
     public $name;
     public $date;
 
-    public function __construct($name)
+    public function __construct($name,$date,$listTask)
     {
-        $this->listTask = array();
+        $this->listTask = $listTask;
         $this->name = $name;
-        $this->date = date('Y-m-d');
+        $this->date = $date;
     }
 
-    public function addlist(Task $task){
-        $this->listTask[] = $task;
+    public function getListTask()
+    {
+        return $this->listTask;
     }
 }

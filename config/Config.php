@@ -1,20 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hucombe
- * Date: 23/11/17
- * Time: 14:56
- */
 
 $rep=__DIR__.'/../';
 
 //Base de données
-$base="mysql:host=localhost;dbname=dbhucombe";
-$login="hucombe";
-$mdp="hucombe";
+$BDD="mysql:host=localhost;dbname=dbhucombe";
+$loginBDD="hucombe";
+$mdpBDD="hucombe";
 
 //Vues
 $vues['Accueil']='vue/Accueil.php';
+$vues['Registration']='vue/Registration.php';
+
+//Vue Erreur
 $vues['Erreur']='vue/Erreur.php';
 
 ?>

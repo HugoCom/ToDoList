@@ -6,11 +6,21 @@
 <body>
 <h1> Bienvenue sur le site ToDoList ! </h1>
 
-<form method="POST">
-    Username : <input type="text" name="login" title="Username"/>
-    Mot de passe : <input type="password" name="password" title="Password"/>
-    <input type="submit" name="action" value="Valider">
-</form>
+<?php
+//    if(!isset($_SESSION['connecte']))
+//    {
+        echo "
+         <form method=\"POST\">
+             Login : <input type=\"text\" name=\"login\" title=\"Username\"/>
+             Password : <input type=\"password\" name=\"password\" title=\"Password\"/>
+             <input type=\"submit\" name=\"action\" value=\"Valider\"/>
+             <input type=\"submit\" name=\"action\" value=\"Register\"/>
+         </form>
+        ";
+//    }
+?>
+
+
 
 </body>
 </html>
