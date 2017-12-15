@@ -1,5 +1,5 @@
 <?php
-include_once("modele/User.php");
+include_once("User.php");
 
 class UserGateway
 {
@@ -10,7 +10,8 @@ class UserGateway
         $this->con = $con;
     }
 
-    public function insert($login,$password,$prenom,$nom,$email) {
+    public function insert($login,$password,$prenom,$nom,$email)
+    {
         $query='INSERT INTO User (login,password,prenom,nom,email) VALUES (?,?,?,?,?)';
 
         $stmt=$this->con->prepare($query);
@@ -21,13 +22,28 @@ class UserGateway
         $stmt->bindValue(5,$email, PDO::PARAM_STR);
         $stmt->execute();
     }
-    public function select($arg){
+    public function select($arg)
+    {
         $query='SELECT * FROM User WHERE login=?';
         $stmt=$this->con->prepare($query);
         $stmt->bindValue(1,$arg,PDO::PARAM_STR);
         $stmt->execute();
         $result=$stmt->fetchAll();
         foreach($result as $row) {
+            $tab[] = new User($row[1], $row[3], $row[4], $row[5]);
+        }
+        return $tab;
+    }
+    public function exist($login,$password)
+    {
+        $query='SELECT * FROM User WHERE login=? AND password=?';
+        $stmt=$this->con->prepare($query);
+        $stmt->bindValue(1,$login,PDO::PARAM_STR);
+        $stmt->bindValue(2,$password,PDO::PARAM_STR);
+        $stmt->execute();
+        $result=$stmt->fetchAll();
+        foreach($result as $row)
+        {
             $tab[] = new User($row[1], $row[3], $row[4], $row[5]);
         }
         return $tab;

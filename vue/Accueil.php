@@ -1,22 +1,16 @@
 <html>
-    <head>
-        <title>ToDo List </title>
-    </head>
+<head>
+    <title>ToDo List </title>
+</head>
 
-    <body>
-        <h1> Vos Listes </h1>
+<body>
+<h1> Bienvenue sur le site ToDoList ! </h1>
 
-        <?php
-            for ($i = 1; $i <= 10; $i++) {
-                echo "<ul>";
-                for ($j = 1; $j<= 1; $j++) {
-                    echo "<li>";
-                    echo var_dump($TVues);
-                    echo "</li>";
-                }
-                echo "</ul>";
-                echo "<br>";
-            }
-        ?>
-    </body>
+<form method="POST">
+    Username : <input type="text" name="login" title="Username"/>
+    Mot de passe : <input type="password" name="password" title="Password"/>
+    <input type="submit" name="action" value="Valider">
+</form>
+
+</body>
 </html>
