@@ -6,7 +6,7 @@ class Task
     public $complete;
     public $list;
 
-    public function __construct(string $name, string $description, string $complete, string $list)
+    public function __construct(string $name, string $description, string $complete, int $list)
     {
         $this->name = $name;
         $this->description = $description;
