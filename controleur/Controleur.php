@@ -2,15 +2,9 @@
 
     class Controleur
     {
-        private $action;
-        public $listTask;
-
         public function __construct()
         {
             global $rep, $vues, $BDD, $loginBDD, $mdpBDD;
-            session_set_cookie_params(0);
-            session_start();
-            $_SESSION = array();
 
             $taskGW = new TaskGateway(new Connection($BDD,$loginBDD,$mdpBDD));
             $listTask = $taskGW->select(1);
@@ -27,14 +21,28 @@
                 case null:
                     require($rep.$vues['Accueil']);
                     break;
-                case 'Valider':
+                case 'Connect':
                     $this->connexion();
                     break;
                 case 'Register':
-                    $this->register();
+                    require_once($rep.$vues['Registration']);
                     break;
                 case 'ValiderRegister':
                     $this->Vregister();
+                    break;
+                case 'Add a task':
+                    $_SESSION['Rule'] = "public";
+                    require_once($rep.$vues['Adding']);
+                    break;
+                case 'Add a private task':
+                    $_SESSION['Rule'] = "private";
+                    require_once($rep.$vues['Adding']);
+                    break;
+                case 'Add task':
+                    $this->AddTask();
+                    break;
+                case 'Add private task':
+                    $this->AddPrivateTask(4);
                     break;
                 default:
                     break;
@@ -62,15 +70,10 @@
 
             $listTaskPerso = $taskGW->select($_SESSION['idListTask']);
             $listTask = $this->listTask;
-            require_once($rep . $vues['Accueil']);
+            require($rep . $vues['Accueil']);
         }
     }
 
-    public function register()
-    {
-        global $rep, $vues;
-        require_once($rep . $vues['Registration']);
-    }
 
     public function Vregister()
     {
@@ -98,4 +101,34 @@
         $listTask = $this->listTask;
         require_once($rep.$vues['Accueil']);
     }
+
+    public function AddTask()
+    {
+        global $rep, $vues, $BDD, $loginBDD, $mdpBDD;
+
+        $taskGW = new TaskGateway(new Connection($BDD,$loginBDD,$mdpBDD));
+
+        $name = $_REQUEST['name'];
+        $desc = $_REQUEST['description'];
+
+        $taskGW->insert($name,$desc,0,1);
+
+        $listTask = $taskGW->select(1);
+        require_once($rep.$vues['Accueil']);
+
+    }
+
+    public function AddPrivateTask($id)
+    {
+            global $rep, $vues, $BDD, $loginBDD, $mdpBDD;
+            $taskGW = new TaskGateway(new Connection($BDD,$loginBDD,$mdpBDD));
+
+            $name = $_REQUEST['name'];
+            $desc = $_REQUEST['description'];
+
+            $taskGW->insert($name,$desc,0, $id);
+            $listTask = $taskGW->select(1);
+            require_once($rep.$vues['Accueil']);
+    }
+
 }

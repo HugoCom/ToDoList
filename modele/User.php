@@ -7,7 +7,7 @@ class User
     public $email;
     public $listTask;
 
-    public function __construct(string $login, string $surname, string $name, string $email, int $listTask)
+    public function __construct($login, $surname, $name, $email, $listTask)
     {
         $this->login = $login;
         $this->surname = $surname;

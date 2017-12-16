@@ -7,8 +7,7 @@
 <h1> Registration ! </h1>
 
 <?php
-//    if(!isset($_SESSION['connecte']))
-//    {
+
 echo "
          <form method=\"POST\">
          Login : <input type=\"text\" name=\"login\" title=\"Login\"/>
@@ -19,7 +18,6 @@ echo "
          <input type=\"submit\" name=\"action\" value=\"ValiderRegister\"/>
          </form>
         ";
-//    }
 ?>
 
 

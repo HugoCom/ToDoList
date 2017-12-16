@@ -8,6 +8,8 @@ require_once(__DIR__.'/config/Autoload.php');
 
 try{
     Autoload::charger();
+    session_start();
+    $_SESSION['connecte'] = "no";
     $cont = new Controleur();
 }
 

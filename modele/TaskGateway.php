@@ -28,7 +28,7 @@ class TaskGateway
         $stmt->execute();
         $result=$stmt->fetchAll();
         foreach($result as $row) {
-            $tab[] = new Task($row[1], $row[2], $row[3], $row[4]);
+            $tab[] = new Task($row[1], $row[2], $row[3], strval($row[4]));
         }
         return $tab;
     }
