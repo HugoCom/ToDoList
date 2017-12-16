@@ -6,9 +6,14 @@
 
         public function __construct()
         {
-            global $rep, $vues;
+            global $rep, $vues, $BDD, $loginBDD, $mdpBDD;
             session_set_cookie_params(0);
             session_start();
+            $_SESSION = array();
+
+            $taskGW = new TaskGateway(new Connection($BDD,$loginBDD,$mdpBDD));
+            $listTask = $taskGW->select(1);
+
 
             if(isset($_REQUEST['action']))
                 $this->action=$_REQUEST['action'];
@@ -38,6 +43,8 @@
     {
         global $rep, $vues, $BDD, $loginBDD, $mdpBDD;
         $userGW = new UserGateway(new Connection($BDD,$loginBDD,$mdpBDD));
+        $taskGW = new TaskGateway(new Connection($BDD,$loginBDD,$mdpBDD));
+
         $user = $userGW->exist($_REQUEST['login'],$_REQUEST['password']);
         if($user == null)
         {
@@ -50,6 +57,8 @@
             $_SESSION['name'] = $user->getName();
             $_SESSION['surname'] = $user->getSurname();
             $_SESSION['idListTask'] = $user->getListTask();
+
+            $listTaskPerso = $taskGW->select($_SESSION['idListTask']);
 
             echo "Connecté";
             require_once($rep . $vues['Accueil']);
@@ -64,7 +73,7 @@
 
     public function Vregister()
     {
-        global $BDD, $loginBDD, $mdpBDD;
+        global $rep, $vues, $BDD, $loginBDD, $mdpBDD;
 
         $userGW = new UserGateway(new Connection($BDD,$loginBDD,$mdpBDD));
         $listTaskGW = new ListTaskGateway(new Connection($BDD,$loginBDD,$mdpBDD));
@@ -75,10 +84,16 @@
         $name = $_REQUEST['name'];
         $email = $_REQUEST['email'];
 
-        //TESTER SI LOGIN UTILISATEUR PAS DEJA DANS LA TABLE AVANT DE CREER LA LISTE
-
-        $listTask = $listTaskGW->insert($login,date("Y-m-d"));
-
-        $userGW->insert($login,$password,$surname,$name,$email,$listTask->getListTask());
+        try{
+            $listTask = $listTaskGW->insert($login,date("Y-m-d"));
+            $userGW->insert($login,$password,$surname,$name,$email,$listTask->getListTask());
+        }
+        catch(PDOException $e)
+        {
+            echo $e->getMessage();
+            require_once($rep.$vues['Registration']);
+            return;
+        }
+        require_once($rep.$vues['Accueil']);
     }
 }

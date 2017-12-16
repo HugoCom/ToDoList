@@ -13,4 +13,19 @@ class Task
         $this->complete = false;
         $this->list = $list;
     }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function isComplete()
+    {
+        return $this->complete;
+    }
 }

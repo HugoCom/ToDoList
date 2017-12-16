@@ -1,11 +1,4 @@
 <?php
-
-/**
- * Created by PhpStorm.
- * User: gucothenet
- * Date: 08/11/17
- * Time: 14:30
- */
 class User
 {
     public $login;
@@ -17,10 +10,10 @@ class User
     public function __construct(string $login, string $surname, string $name, string $email, int $listTask)
     {
         $this->login = $login;
-        $this->prenom = $surname;
-        $this->nom = $name;
+        $this->surname = $surname;
+        $this->name = $name;
         $this->email = $email;
-        $this->listeTache = $listTask;
+        $this->listTask = $listTask;
     }
     public function getName()
     {

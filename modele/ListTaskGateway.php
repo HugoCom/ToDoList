@@ -15,7 +15,10 @@ class ListTaskGateway
         $stmt=$this->con->prepare($query);
         $stmt->bindValue(1,$name, PDO::PARAM_STR);
         $stmt->bindValue(2,$date, PDO::PARAM_STR);
-        $stmt->execute();
+        $bool = $stmt->execute();
+
+        if($bool == false)
+            throw new PDOException("Erreur, login indisponible, veuillez en choisir un autre");
 
         return $this->selectList($name);
     }

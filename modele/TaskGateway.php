@@ -1,7 +1,7 @@
 <?php
-include_once("modele/Task.php");
+include_once("Task.php");
 
-class UserGateway
+class TaskGateway
 {
     private $con;
 
@@ -21,6 +21,7 @@ class UserGateway
         $stmt->execute();
     }
     public function select($arg){
+        $tab = array();
         $query='SELECT * FROM Task WHERE IDListTask=?';
         $stmt=$this->con->prepare($query);
         $stmt->bindValue(1,$arg,PDO::PARAM_INT);
@@ -31,7 +32,7 @@ class UserGateway
         }
         return $tab;
     }
-     public function delete($arg){
+    public function delete($arg){
         $query='DELETE FROM Task WHERE ID=?';
         $stmt=$this->con->prepare($query);
         $stmt->bindValue(1,$arg,PDO::PARAM_INT);

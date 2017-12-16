@@ -21,7 +21,9 @@ class UserGateway
         $stmt->bindValue(4,$nom, PDO::PARAM_STR);
         $stmt->bindValue(5,$email, PDO::PARAM_STR);
         $stmt->bindValue(6,$idList, PDO::PARAM_INT);
-        $stmt->execute();
+        $bool = $stmt->execute();
+        if($bool == false)
+            throw new PDOException("Erreur, login non disponible");
     }
     public function select($arg)
     {
