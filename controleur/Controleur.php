@@ -3,6 +3,7 @@
     class Controleur
     {
         private $action;
+        public $listTask;
 
         public function __construct()
         {
@@ -13,6 +14,7 @@
 
             $taskGW = new TaskGateway(new Connection($BDD,$loginBDD,$mdpBDD));
             $listTask = $taskGW->select(1);
+            $this->listTask = $listTask;
 
 
             if(isset($_REQUEST['action']))
@@ -59,8 +61,7 @@
             $_SESSION['idListTask'] = $user->getListTask();
 
             $listTaskPerso = $taskGW->select($_SESSION['idListTask']);
-
-            echo "Connecté";
+            $listTask = $this->listTask;
             require_once($rep . $vues['Accueil']);
         }
     }
@@ -94,6 +95,7 @@
             require_once($rep.$vues['Registration']);
             return;
         }
+        $listTask = $this->listTask;
         require_once($rep.$vues['Accueil']);
     }
 }
