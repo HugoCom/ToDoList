@@ -21,10 +21,10 @@
                 case null:
                     require($rep.$vues['Accueil']);
                     break;
-                case 'Connect':
+                case 'Log in':
                     $this->connexion();
                     break;
-                case 'Register':
+                case 'Sign up':
                     require_once($rep.$vues['Registration']);
                     break;
                 case 'ValiderRegister':
@@ -95,7 +95,7 @@
         catch(PDOException $e)
         {
             echo $e->getMessage();
-            require_once($rep.$vues['Registration']);
+            require_once($rep.$vues['Register']);
             return;
         }
         $listTask = $this->listTask;

@@ -1,0 +1,176 @@
+body {
+    background-image: url("home.jpg");
+}
+
+div{
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header, footer {
+    color: #787878;
+    font-size: large;
+    font-family: "Baskerville Old Face";
+    text-align: center;
+    padding: 1em;
+    clear: left;
+}
+
+#pub {
+    color: #262978;
+    font-family: "Baskerville Old Face";
+    text-align: center;
+}
+
+#priv {
+    color: #af5010;
+    font-family: "Baskerville Old Face";
+    text-align: center;
+}
+
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+}
+
+#FORM {
+    color: rgba(0, 0, 0, 0.86);
+    font-family: "Baskerville Old Face";
+    text-align: center;
+}
+
+#inside {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#log {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#log:hover {
+    background-color: #62af5d;
+}
+
+#register {
+    width: 100%;
+    background-color: #af1607;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#register:hover {
+    background-color: #af362b;
+}
+
+input, name {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+section {
+    float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+
+#reg {
+    width: 30%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#log {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#regilogin {
+    width: 30%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#REGI {
+    color: rgba(0, 0, 0, 0.86);
+    font-family: "Baskerville Old Face";
+}
+
+#taskpub{
+    width: 30%;
+    background-color: #262978;
+    color: white;
+    display:inline-block;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#taskpub:hover {
+    background-color: #3e3378;
+}
+
+#taskpriv{
+    width: 30%;
+    background-color: #af5010;
+    color: white;
+    display:inline-block;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#taskpriv:hover {
+    background-color: #af6036;
+}
+
+
+
+#error {
+    color: #af1a18;
+    font-size: xx-large;
+    font-family: "Baskerville Old Face";
+    text-align: center;
+}
