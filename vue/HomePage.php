@@ -25,7 +25,20 @@
                         </form>
                         ";
                     }
+                    ?>
+                <?php
+                    if ($_SESSION['connecte'] == "yes") {
+                        echo "
+                            <h3>You are log in.</h3>
+                            <form method='POST' >
+                                <label> Sign out :</label>
+                                <input id='register' type='submit' name='action' value='Sign out'/>
+                            </form>
+                            ";
+                    }
                 ?>
+
+
             </section>
 
             <article>

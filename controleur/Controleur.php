@@ -7,6 +7,7 @@
             global $rep, $vues, $BDD, $loginBDD, $mdpBDD;
 
             $taskGW = new TaskGateway(new Connection($BDD,$loginBDD,$mdpBDD));
+            $listTaskPerso = $taskGW->select($_SESSION['idListTask']);
             $listTask = $taskGW->select(1);
             $this->listTask = $listTask;
 
@@ -21,8 +22,20 @@
                 case null:
                     require($rep.$vues['Accueil']);
                     break;
+                case 'Home Page':
+                    require_once($rep.$vues['Accueil']);
+                    break;
                 case 'Log in':
-                    $this->connexion();
+                    $this->Connexion();
+                    break;
+                case 'Sign out':
+                    //Code pour la deconnexion a mettre dans un modele(Toutes les sessions doivent etre géré dans un modele)
+                    //Je destroy les sessions et je rappelle la vue d accueil, il faut faire une methode pour factorise le code
+                    $_SESSION['connecte'] = "no";
+                    //en principe on fait :
+                    //session_unset();
+                    //session_destroy();
+                    require_once($rep.$vues['Accueil']);
                     break;
                 case 'Sign up':
                     require_once($rep.$vues['Registration']);
@@ -49,7 +62,7 @@
             }
     }
 
-    public function connexion()
+    public function Connexion()
     {
         global $rep, $vues, $BDD, $loginBDD, $mdpBDD;
         $userGW = new UserGateway(new Connection($BDD,$loginBDD,$mdpBDD));
@@ -130,5 +143,4 @@
             $listTask = $taskGW->select(1);
             require_once($rep.$vues['Accueil']);
     }
-
 }

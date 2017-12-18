@@ -1,12 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: hucombe
- * Date: 28/11/17
- * Time: 13:57
- */
-class Validation
+class ValidationAccount
 {
 
     static function val_action($action) {
@@ -49,3 +43,39 @@ class Validation
 }
 
 ?>
+
+
+/*
+
+class ValidationRequest {
+public static function sanitizeString($chaine) {
+return isset($chaine) ? filter_var($chaine, FILTER_SANITIZE_STRING) : "";
+}
+public static function validationLogin(&$dataError, &$email, &$password) {
+if (!isset($dataError)) {
+$dataError = array();
+}
+$wouldBePassword = $_POST['password'];
+$passwordConfirm=$_POST['passwordConfirm'];
+if ($passwordConfirm !== $wouldBePassword){
+$dataError['confirm']="La confirmation est incorrecte";
+}
+if (empty($wouldBePassword) || !AuthUtils::isStrongPassword($wouldBePassword)) {
+$password = "";
+$dataError['mdp'] = "Mot de passe incorrect" . ": votre mot de passe doit contenir au moins 8 caractères dont " . " des lettes et au moins un chiffre.</p>";
+} else {
+$password = $wouldBePassword;
+}
+if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) == FALSE) {
+$email ="";
+$dataError['login']= "Adresse email invalide.";
+
+}
+else {
+$email=$_POST["email"];
+}
+}
+}
+
+*/
+

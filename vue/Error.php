@@ -20,6 +20,15 @@
                     echo $value;
                 }
                 ?>
+                <?php
+                    echo "
+                    <p> </p>
+                    <form method='POST'>
+                    <input id='taskpub' type='submit' name='action' value='Home Page'/>
+                    </form>
+                    ";
+                ?>
+
             </article>
 
         <footer>Copyright : Hugo Combe & Thomas Deffradas, Groupe 7 - 2017</footer>
