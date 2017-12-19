@@ -1,43 +1,43 @@
 <?php
 
-class ValidationTask
-{
+    class ValidationTask
+    {
+        static function val_action($action) {
+            if (!isset($action)) {
+                throw new Exception('Pas d\'action');
+            }
+        }
 
+        static function val_form_list(string $name, string $date)
+        {
+            if(empty($name))
+                throw new Exception('Pas de name');
+            if(empty($date))
+                throw new Exception('Pas de description');
 
-}
+            if (ValidationUse::sanitizeString($name) == FALSE) {
+                throw new Exception('Injection SQL');
+            }
+            if (ValidationUse::sanitizeString($date) == FALSE) {
+                throw new Exception('Injection SQL');
+            }
 
-/*
- *
- *
- * class MusiqueValidation {
-    public static function filterMusique($musique,$reversed,$policy){
-        VU::filterString($musique->titre,$reversed,$policy);
-        VU::filterString($musique->nomAuteur,$reversed,$policy);
-        VU::filterString($musique->nomAlbum,$reversed,$policy);
-        VU::filterString($musique->cheminAudio,$reversed,$policy);
-        VU::filterString($musique->couvertureAlbum,$reversed,$policy);
-        VU::filterString($musique->duree,$reversed,$policy);
-        VU::filterString($musique->anneeParution,$reversed,$policy);
-        VU::filterString($musique->periodeMel,$reversed,$policy);
+        }
 
+        static function val_form_task(string $name, string $description )
+        {
+            if(empty($name))
+                throw new Exception('Pas de name');
+            if(empty($description))
+                throw new Exception('Pas de description');
+
+            if (ValidationUse::sanitizeString($name) == FALSE) {
+                throw new Exception('Injection SQL');
+            }
+            if (ValidationUse::sanitizeString($description) == FALSE) {
+                throw new Exception('Injection SQL');
+            }
+
+        }
     }
-
-    public static function validationInput ($inputArray,&$musique,$policy){
-        @$musique->idMusique= $inputArray['idMusique'];
-        $musique->titre =$inputArray['titre'];
-        $musique->nomAuteur=$inputArray['nomAuteur'];
-        $musique->cheminAudio=$inputArray['cheminAudio'];
-        $musique->nomAlbum=$inputArray['nomAlbum'];
-        $musique->couvertureAlbum=$inputArray['couvertureAlbum'];
-        $musique->periodeMel=$inputArray['periodeMel'];
-        $musique->duree=$inputArray['duree'];
-        $musique->anneeParution=$inputArray['anneeParution'];
-        $musique->nbavisFavorables=$inputArray['nbavisFavorables'];
-        $musique->nbavisIndifferents=$inputArray['nbavisIndifferents'];
-        $musique->nbavisDefavorables=$inputArray['nbavisDefavorables'];
-        self::filterMusique($musique, true, $policy);
-    }
-}
- */
-
-//UTILISE TOUS LES SANITIZA ET FILTER DE BASE AVEC VU
+?>

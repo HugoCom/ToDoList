@@ -1,5 +1,5 @@
 <?php
-include_once("User.php");
+include_once("/modele/User.php");
 
 class UserGateway
 {
@@ -52,3 +52,5 @@ class UserGateway
 
     }
 }
+
+?>

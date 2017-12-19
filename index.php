@@ -8,14 +8,11 @@ require_once(__DIR__.'/config/Autoload.php');
 
 try{
     Autoload::charger();
-    session_start();
-    $_SESSION['connecte'] = "no";
-    $cont = new Controleur();
+    $cont = new FrontControleur();
 }
 
 catch(Exception $e){
-
-
+    echo 'Erreur :'.$e->getMessage();
 }
 
 ?>
